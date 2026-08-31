@@ -3,8 +3,15 @@ const express = require('express');
 const app = express();
 const PORT = 3000;
 
-app.get('/about', (req, res) => {
-    res.send('This is Sabbir James');
+app.use(express.json());
+
+app.post('/users', (req, res) => {
+
+    const name = req.body.name;
+    const email = req.body.email;
+
+    res.send(`User created: ${name}, ${email}`);
+
 });
 
 app.listen(PORT, () => {
